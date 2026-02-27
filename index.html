@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Relationship Assistant | Early Access</title>
+    <!-- GA4: replace G-XXXXXXXXXX with your real Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-XXXXXXXXXX");
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                50: "#f9f4ef",
+                100: "#efdfd3",
+                200: "#dcc0ad",
+                500: "#8a5a45",
+                600: "#6f4635",
+              },
+              slatewarm: {
+                900: "#1f1512",
+              },
+              night: {
+                800: "#2b1f1b",
+                900: "#1a1210",
+              },
+            },
+            boxShadow: {
+              cta: "0 24px 55px -24px rgba(64, 34, 26, 0.6)",
+              soft: "0 12px 38px -20px rgba(38, 21, 16, 0.38)",
+            },
+            backgroundImage: {
+              "warm-radial":
+                "radial-gradient(circle at 82% 14%, rgba(131,82,60,0.26), rgba(252,246,241,0.96) 52%)",
+              "warm-band":
+                "linear-gradient(140deg, rgba(251,244,238,0.97), rgba(241,227,215,0.95))",
+              "night-band":
+                "linear-gradient(150deg, rgba(30,20,17,0.98), rgba(56,34,29,0.96))",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-brand-50 font-sans text-slate-800 antialiased">
+    <div class="fixed right-4 top-4 z-50 flex items-center gap-1 rounded-full border border-brand-200 bg-white/95 p-1 shadow-soft backdrop-blur">
+      <button
+        type="button"
+        data-lang-switch="en"
+        class="rounded-full px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-100"
+      >
+        EN
+      </button>
+      <button
+        type="button"
+        data-lang-switch="hi"
+        class="rounded-full px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-100"
+      >
+        हिंदी
+      </button>
+    </div>
+    <main>
+      <section id="hero" data-track-section="hero" class="relative overflow-hidden bg-warm-radial">
+        <div class="absolute -left-32 top-10 h-56 w-56 rounded-full bg-brand-200/45 blur-3xl"></div>
+        <div class="absolute right-0 top-28 h-64 w-64 rounded-full bg-brand-100/70 blur-3xl"></div>
+
+        <div class="mx-auto grid max-w-7xl gap-10 px-5 pb-14 pt-10 md:px-10 md:pb-20 md:pt-14 lg:grid-cols-2 lg:items-center lg:gap-16 lg:pb-24 lg:pt-20">
+          <div class="relative z-10 space-y-6 md:space-y-8">
+            <div class="inline-flex items-center rounded-full border border-brand-200 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-600 shadow-soft">
+              [Product Name]
+            </div>
+
+            <div class="space-y-5">
+              <h1 data-i18n="hero_headline" class="max-w-xl text-3xl font-extrabold leading-tight text-slatewarm-900 sm:text-5xl lg:text-6xl">
+                Build Better Romantic Connections
+              </h1>
+              <p data-i18n-html="hero_subheadline_html" class="max-w-lg text-base leading-relaxed text-slate-600 sm:text-xl">
+                Practice meaningful conversations.<br />
+                Feel confident in dating.<br />
+                Create real chemistry.
+              </p>
+            </div>
+
+            <div class="max-w-md space-y-3 md:space-y-4">
+              <form data-track-form="hero_early_access" class="flex flex-col gap-3 sm:flex-row">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  data-i18n-placeholder="email_placeholder"
+                  class="w-full rounded-2xl border border-brand-200 bg-white px-5 py-3.5 text-base font-medium text-slate-900 shadow-cta outline-none ring-brand-500 transition focus:ring-2"
+                />
+                <button
+                  type="submit"
+                  data-track-click="hero_cta"
+                  data-i18n="cta_early_access"
+                  class="w-full rounded-2xl bg-night-900 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-night-800 sm:w-auto"
+                >
+                  Get Early Access
+                </button>
+              </form>
+              <p data-i18n="hero_no_spam" class="text-sm text-slate-500">No spam. Early beta only.</p>
+            </div>
+          </div>
+
+          <div class="relative mx-auto w-full max-w-md lg:max-w-lg">
+            <img
+              src="./assets/images/hero-girl.png"
+              alt="Warm portrait of a woman holding a smartphone"
+              class="w-full rounded-[2rem] object-cover shadow-soft ring-1 ring-white/70"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="what-is-it" data-track-section="what_is_it" class="mx-auto max-w-7xl px-5 py-14 md:px-10 md:py-20 lg:py-24">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 data-i18n="what_is_it_title" class="text-3xl font-bold text-slatewarm-900 sm:text-4xl">What is it?</h2>
+          <p data-i18n="what_is_it_desc" class="mt-4 text-lg leading-relaxed text-slate-600">
+            An AI girl assistant that helps you improve real-life relationship skills.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:gap-6">
+          <article class="rounded-3xl border border-brand-100 bg-white/95 p-6 shadow-soft">
+            <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50">
+              <svg class="h-5 w-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M8 14h5M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-5 4V6a1 1 0 0 1 1-1Z" />
+              </svg>
+            </div>
+            <h3 data-i18n="feature_1" class="text-lg font-semibold text-slatewarm-900">Start conversations naturally</h3>
+          </article>
+
+          <article class="rounded-3xl border border-brand-100 bg-white/95 p-6 shadow-soft">
+            <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50">
+              <svg class="h-5 w-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 3h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
+                <path stroke-linecap="round" d="M11 18h2" />
+              </svg>
+            </div>
+            <h3 data-i18n="feature_2" class="text-lg font-semibold text-slatewarm-900">Keep romantic chats engaging</h3>
+          </article>
+
+          <article class="rounded-3xl border border-brand-100 bg-white/95 p-6 shadow-soft">
+            <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50">
+              <svg class="h-5 w-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 6a3 3 0 0 0-6 0c0 1.7 1.3 3.1 3 3.3V18a2 2 0 0 0 2 2h1M15 6a3 3 0 0 1 6 0c0 1.7-1.3 3.1-3 3.3V18a2 2 0 0 1-2 2h-1M10 20h4M12 9v11" />
+              </svg>
+            </div>
+            <h3 data-i18n="feature_3" class="text-lg font-semibold text-slatewarm-900">Understand emotional signals</h3>
+          </article>
+
+          <article class="rounded-3xl border border-brand-100 bg-white/95 p-6 shadow-soft">
+            <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50">
+              <svg class="h-5 w-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="5" width="18" height="16" rx="2" />
+                <path stroke-linecap="round" d="M8 3v4M16 3v4M3 10h18" />
+              </svg>
+            </div>
+            <h3 data-i18n="feature_4" class="text-lg font-semibold text-slatewarm-900">Prepare for real dates</h3>
+          </article>
+        </div>
+      </section>
+
+      <section id="not-fantasy" data-track-section="not_fantasy" class="bg-night-band py-14 md:py-20 lg:py-24">
+        <div class="mx-auto grid max-w-7xl gap-8 px-5 md:gap-12 md:px-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+          <div class="space-y-5">
+            <h2 data-i18n-html="not_fantasy_title_html" class="text-3xl font-bold leading-tight text-brand-50 sm:text-4xl">
+              Not a fantasy bot.<br />
+              Not roleplay.<br />
+              Not fake love.
+            </h2>
+            <p data-i18n="not_fantasy_desc" class="max-w-lg text-lg leading-relaxed text-brand-100">
+              This is a safe space to practice real emotional intelligence.
+            </p>
+          </div>
+
+          <div class="relative">
+            <div class="rounded-[2rem] border border-white/20 bg-white/10 p-4 shadow-soft backdrop-blur-md md:p-6">
+              <img
+                src="./assets/images/chat-mockup.jpg"
+                alt="Chat practice interface mockup"
+                class="mx-auto h-[24rem] w-full max-w-sm rounded-2xl border border-white/40 object-cover md:h-[28rem]"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="made-for-you" data-track-section="made_for_you" class="mx-auto max-w-7xl px-5 py-14 md:px-10 md:py-20 lg:py-24">
+        <div class="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+          <div>
+            <h2 data-i18n="made_for_you_title" class="text-3xl font-bold text-slatewarm-900 sm:text-4xl">Made for you if</h2>
+            <ul class="mt-8 space-y-4 text-base text-slate-700 sm:text-lg">
+              <li data-i18n="made_1" class="rounded-2xl border border-brand-200 bg-white/80 px-5 py-4">You feel nervous before texting</li>
+              <li data-i18n="made_2" class="rounded-2xl border border-brand-200 bg-white/80 px-5 py-4">Conversations fade too quickly</li>
+              <li data-i18n="made_3" class="rounded-2xl border border-brand-200 bg-white/80 px-5 py-4">You struggle to express feelings</li>
+              <li data-i18n="made_4" class="rounded-2xl border border-brand-200 bg-white/80 px-5 py-4">You want a serious relationship</li>
+            </ul>
+          </div>
+          <div class="mx-auto w-full max-w-xs lg:max-w-sm">
+            <img
+              src="./assets/images/hero-girl-2.png"
+              alt="Portrait of a woman for realistic conversation coaching context"
+              class="w-full rounded-[1.75rem] object-cover shadow-soft"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" data-track-section="how_it_works" class="bg-warm-band py-14 md:py-20 lg:py-24">
+        <div class="mx-auto max-w-7xl px-5 text-center md:px-10">
+          <h2 data-i18n="how_it_works_title" class="text-3xl font-bold text-slatewarm-900 sm:text-4xl">How it works</h2>
+          <div class="mt-10 grid gap-4 md:grid-cols-2 lg:mt-12 lg:grid-cols-4 lg:gap-5">
+            <article class="rounded-3xl border border-brand-100 bg-white/95 p-6 shadow-soft">
+              <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50">
+                <svg class="h-5 w-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M8 14h5M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-5 4V6a1 1 0 0 1 1-1Z" />
+                </svg>
+              </div>
+              <p data-i18n="step_1_label" class="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Step 1</p>
+              <p data-i18n="step_1_desc" class="font-medium text-slate-800">Chat in realistic dating scenarios</p>
+            </article>
+            <article class="rounded-3xl border border-brand-100 bg-white/95 p-6 shadow-soft">
+              <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50">
+                <svg class="h-5 w-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18" />
+                </svg>
+              </div>
+              <p data-i18n="step_2_label" class="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Step 2</p>
+              <p data-i18n="step_2_desc" class="font-medium text-slate-800">Practice emotional conversations</p>
+            </article>
+            <article class="rounded-3xl border border-brand-100 bg-white/95 p-6 shadow-soft">
+              <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50">
+                <svg class="h-5 w-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4 12 5 5L20 6" />
+                </svg>
+              </div>
+              <p data-i18n="step_3_label" class="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Step 3</p>
+              <p data-i18n="step_3_desc" class="font-medium text-slate-800">Get subtle feedback</p>
+            </article>
+            <article class="rounded-3xl border border-brand-100 bg-white/95 p-6 shadow-soft">
+              <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50">
+                <svg class="h-5 w-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </div>
+              <p data-i18n="step_4_label" class="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Step 4</p>
+              <p data-i18n="step_4_desc" class="font-medium text-slate-800">Apply it in real life</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="final-cta" data-track-section="final_cta" class="px-5 py-14 md:px-10 md:py-20 lg:py-24">
+        <div class="mx-auto max-w-3xl rounded-[2rem] border border-white/20 bg-night-band px-5 py-10 text-center shadow-soft sm:px-10 sm:py-12">
+          <h2 data-i18n="final_title" class="text-3xl font-bold text-brand-50 sm:text-4xl">Join Early Access</h2>
+          <p data-i18n="final_subtitle" class="mt-3 text-lg text-brand-100">We're building the first version now.</p>
+
+          <form data-track-form="final_early_access" class="mx-auto mt-8 flex max-w-xl flex-col gap-3 sm:flex-row">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              data-i18n-placeholder="email_placeholder"
+              class="w-full rounded-2xl border border-brand-100 bg-white px-5 py-4 text-base font-medium text-slate-900 shadow-cta outline-none ring-brand-500 transition focus:ring-2"
+            />
+            <button
+              type="submit"
+              data-track-click="final_cta"
+              data-i18n="cta_early_access"
+              class="w-full rounded-2xl bg-brand-600 px-8 py-4 text-sm font-semibold text-white transition hover:bg-brand-500 sm:w-auto"
+            >
+              Get Early Access
+            </button>
+          </form>
+
+          <p data-i18n="limited_spots" class="mt-4 text-sm text-brand-100">Limited beta spots.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-brand-200/70 px-6 py-8 md:px-10">
+      <div class="mx-auto flex max-w-7xl flex-col items-start justify-between gap-3 text-sm text-slate-600 sm:flex-row sm:items-center">
+        <p class="font-semibold text-slate-800">[Product Name]</p>
+        <p data-i18n="footer_privacy">Privacy-first. Your conversations stay confidential.</p>
+      </div>
+    </footer>
+    <script>
+      (function () {
+        var I18N_KEY = "landing_lang";
+        var messages = {
+          en: {
+            hero_headline: "Build Better Romantic Connections",
+            hero_subheadline_html:
+              "Practice meaningful conversations.<br />Feel confident in dating.<br />Create real chemistry.",
+            cta_early_access: "Get Early Access",
+            hero_no_spam: "No spam. Early beta only.",
+            email_placeholder: "Enter your email",
+            what_is_it_title: "What is it?",
+            what_is_it_desc: "An AI girl assistant that helps you improve real-life relationship skills.",
+            feature_1: "Start conversations naturally",
+            feature_2: "Keep romantic chats engaging",
+            feature_3: "Understand emotional signals",
+            feature_4: "Prepare for real dates",
+            not_fantasy_title_html: "Not a fantasy bot.<br />Not roleplay.<br />Not fake love.",
+            not_fantasy_desc: "This is a safe space to practice real emotional intelligence.",
+            made_for_you_title: "Made for you if",
+            made_1: "You feel nervous before texting",
+            made_2: "Conversations fade too quickly",
+            made_3: "You struggle to express feelings",
+            made_4: "You want a serious relationship",
+            how_it_works_title: "How it works",
+            step_1_label: "Step 1",
+            step_1_desc: "Chat in realistic dating scenarios",
+            step_2_label: "Step 2",
+            step_2_desc: "Practice emotional conversations",
+            step_3_label: "Step 3",
+            step_3_desc: "Get subtle feedback",
+            step_4_label: "Step 4",
+            step_4_desc: "Apply it in real life",
+            final_title: "Join Early Access",
+            final_subtitle: "We're building the first version now.",
+            limited_spots: "Limited beta spots.",
+            footer_privacy: "Privacy-first. Your conversations stay confidential.",
+          },
+          hi: {
+            hero_headline: "बेहतर रोमांटिक कनेक्शन बनाएं",
+            hero_subheadline_html:
+              "मायने रखने वाली बातचीत का अभ्यास करें।<br />डेटिंग में आत्मविश्वास महसूस करें।<br />वास्तविक केमिस्ट्री बनाएं।",
+            cta_early_access: "अर्ली एक्सेस पाएं",
+            hero_no_spam: "कोई स्पैम नहीं। केवल अर्ली बीटा।",
+            email_placeholder: "अपना ईमेल दर्ज करें",
+            what_is_it_title: "यह क्या है?",
+            what_is_it_desc: "एक AI गर्ल असिस्टेंट जो आपको वास्तविक रिश्तों की स्किल्स बेहतर बनाने में मदद करता है।",
+            feature_1: "बातचीत की शुरुआत नैचुरल तरीके से करें",
+            feature_2: "रोमांटिक चैट को दिलचस्प बनाए रखें",
+            feature_3: "इमोशनल संकेतों को समझें",
+            feature_4: "रियल डेट के लिए तैयार हों",
+            not_fantasy_title_html: "यह फैंटेसी बॉट नहीं है।<br />यह रोलप्ले नहीं है।<br />यह नकली प्यार नहीं है।",
+            not_fantasy_desc: "यह वास्तविक इमोशनल इंटेलिजेंस का अभ्यास करने के लिए सुरक्षित जगह है।",
+            made_for_you_title: "यह आपके लिए है, अगर",
+            made_1: "मैसेज भेजने से पहले घबराहट होती है",
+            made_2: "बातचीत बहुत जल्दी फीकी पड़ जाती है",
+            made_3: "अपनी भावनाएं व्यक्त करने में दिक्कत होती है",
+            made_4: "आप एक सीरियस रिश्ता चाहते हैं",
+            how_it_works_title: "यह कैसे काम करता है",
+            step_1_label: "स्टेप 1",
+            step_1_desc: "रियलिस्टिक डेटिंग सीनारियो में चैट करें",
+            step_2_label: "स्टेप 2",
+            step_2_desc: "इमोशनल बातचीत का अभ्यास करें",
+            step_3_label: "स्टेप 3",
+            step_3_desc: "सूक्ष्म फीडबैक पाएं",
+            step_4_label: "स्टेप 4",
+            step_4_desc: "इसे वास्तविक जीवन में लागू करें",
+            final_title: "अर्ली एक्सेस जॉइन करें",
+            final_subtitle: "हम अभी पहला वर्जन बना रहे हैं।",
+            limited_spots: "बीटा स्पॉट्स सीमित हैं।",
+            footer_privacy: "प्राइवेसी-फर्स्ट। आपकी बातचीत गोपनीय रहती है।",
+          },
+        };
+
+        function setActiveButton(lang) {
+          document.querySelectorAll("[data-lang-switch]").forEach(function (btn) {
+            var isActive = btn.getAttribute("data-lang-switch") === lang;
+            btn.classList.toggle("bg-night-900", isActive);
+            btn.classList.toggle("text-white", isActive);
+            btn.classList.toggle("text-slate-700", !isActive);
+          });
+        }
+
+        function applyLanguage(lang) {
+          var dict = messages[lang] || messages.en;
+          document.documentElement.lang = lang === "hi" ? "hi" : "en";
+
+          document.querySelectorAll("[data-i18n]").forEach(function (node) {
+            var key = node.getAttribute("data-i18n");
+            if (dict[key]) node.textContent = dict[key];
+          });
+
+          document.querySelectorAll("[data-i18n-html]").forEach(function (node) {
+            var key = node.getAttribute("data-i18n-html");
+            if (dict[key]) node.innerHTML = dict[key];
+          });
+
+          document.querySelectorAll("[data-i18n-placeholder]").forEach(function (node) {
+            var key = node.getAttribute("data-i18n-placeholder");
+            if (dict[key]) node.setAttribute("placeholder", dict[key]);
+          });
+
+          setActiveButton(lang);
+          localStorage.setItem(I18N_KEY, lang);
+        }
+
+        var stored = localStorage.getItem(I18N_KEY);
+        var browserLang = (navigator.language || "").toLowerCase();
+        var initialLang = stored || (browserLang.indexOf("hi") === 0 ? "hi" : "en");
+        applyLanguage(initialLang);
+
+        document.querySelectorAll("[data-lang-switch]").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            applyLanguage(btn.getAttribute("data-lang-switch"));
+          });
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        var SECTION_THRESHOLD = 0.45;
+        var SCROLL_MARKS = [25, 50, 75, 90, 100];
+        var firedScrollMarks = {};
+
+        function track(eventName, params) {
+          if (typeof window.gtag !== "function") return;
+          window.gtag("event", eventName, params || {});
+        }
+
+        track("page_view_custom", {
+          page_title: document.title,
+          page_path: window.location.pathname,
+        });
+
+        var sectionNodes = document.querySelectorAll("[data-track-section]");
+        var seenSections = {};
+        var sectionObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting || entry.intersectionRatio < SECTION_THRESHOLD) return;
+              var sectionName = entry.target.getAttribute("data-track-section");
+              if (seenSections[sectionName]) return;
+              seenSections[sectionName] = true;
+              track("section_view", { section_name: sectionName });
+            });
+          },
+          { threshold: [SECTION_THRESHOLD] }
+        );
+        sectionNodes.forEach(function (node) {
+          sectionObserver.observe(node);
+        });
+
+        function handleScrollDepth() {
+          var doc = document.documentElement;
+          var scrollable = doc.scrollHeight - window.innerHeight;
+          if (scrollable <= 0) return;
+          var depth = Math.round((window.scrollY / scrollable) * 100);
+          SCROLL_MARKS.forEach(function (mark) {
+            if (depth >= mark && !firedScrollMarks[mark]) {
+              firedScrollMarks[mark] = true;
+              track("scroll_depth", { percent: mark });
+            }
+          });
+        }
+        window.addEventListener("scroll", handleScrollDepth, { passive: true });
+        handleScrollDepth();
+
+        document.querySelectorAll("[data-track-click]").forEach(function (node) {
+          node.addEventListener("click", function () {
+            track("cta_click", { cta_name: node.getAttribute("data-track-click") });
+          });
+        });
+
+        document.querySelectorAll("form[data-track-form]").forEach(function (form) {
+          form.addEventListener("submit", function () {
+            var emailInput = form.querySelector('input[type="email"]');
+            track("lead_submit", {
+              form_name: form.getAttribute("data-track-form"),
+              has_email: Boolean(emailInput && emailInput.value.trim()),
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
